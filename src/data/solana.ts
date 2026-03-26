@@ -176,11 +176,14 @@ spl-token mint <MINT_ADDRESS> 1000000000`,
       },
     ],
     gotchas: [
-      "Extensions are IMMUTABLE after mint creation — you cannot add or remove them later",
+      "Extensions are IMMUTABLE after mint creation — you cannot add or remove them later. Plan carefully.",
       "Not all DEXes support Token-2022 yet. Jupiter does. Raydium CLMM does. Raydium AMM v4 does NOT.",
       "Transfer hooks require deploying a separate on-chain program — the hook program is called on every transfer",
       "Confidential transfers use zero-knowledge proofs and significantly increase transaction size",
-      "Token-2022 accounts are larger (more rent) than classic SPL accounts",
+      "NonTransferable and TransferFeeConfig are incompatible (conflicting behaviors)",
+      "ConfidentialTransfer and TransferHook are incompatible — check extension compatibility before combining",
+      "Token-2022 accounts are larger (more rent) than classic SPL accounts — extensions add data to the mint",
+      "Full extension list: TransferFee, MintCloseAuthority, ConfidentialTransfer, DefaultAccountState, ImmutableOwner, MemoTransfer, NonTransferable, InterestBearing, CpiGuard, PermanentDelegate, TransferHook, MetadataPointer, TokenMetadata, GroupPointer, TokenGroup, GroupMemberPointer, TokenGroupMember, ConfidentialMintBurn, ScaledUiAmount, Pausable",
       "Some wallets still don't display Token-2022 tokens properly — Phantom and Solflare both support it now",
     ],
     resources: [
@@ -310,7 +313,7 @@ sugar mint
       "Helius or Triton RPC (DAS API needed to read cNFTs)",
     ],
     estimatedCost:
-      "Tree creation: ~1.5 SOL for a tree supporting ~16K cNFTs, ~6 SOL for ~1M cNFTs. Per-mint cost: ~0.000005 SOL (just the transaction fee). 1M cNFTs costs ~6 SOL total vs ~12,000 SOL for standard NFTs.",
+      "Tree sizing: maxDepth=14 (~16K cNFTs) costs ~0.68 SOL, maxDepth=20 (~1M cNFTs) costs ~7.7 SOL. Per-mint cost: ~0.000005 SOL (just the transaction fee). At scale: 10K cNFTs = ~$0.00003/each, 1M cNFTs = ~$0.000005/each. Compare: 1M standard NFTs would cost ~12,000 SOL.",
     steps: [
       {
         order: 1,
