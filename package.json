@@ -1,0 +1,37 @@
+{
+  "name": "token-deploy-guide",
+  "version": "1.0.0",
+  "description": "MCP server providing a comprehensive reference database for deploying tokens and NFTs across Solana and EVM chains",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "token-deploy-guide": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "keywords": [
+    "mcp",
+    "solana",
+    "ethereum",
+    "evm",
+    "token",
+    "nft",
+    "deploy",
+    "erc20",
+    "erc721",
+    "spl-token"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.2",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

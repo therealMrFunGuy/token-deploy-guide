@@ -1,0 +1,6 @@
+name: token-deploy-guide
+description: "Comprehensive reference database for deploying tokens and NFTs across Solana and EVM chains. Step-by-step guides for SPL, Token-2022, Metaplex NFTs, compressed NFTs, Pump.fun, ERC-20, ERC-721, ERC-1155, and ERC-404/DN404. Fully offline — no API key needed."
+runtime: typescript
+entry: dist/index.js
+build:
+  command: npm run build
